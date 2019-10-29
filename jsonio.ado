@@ -63,6 +63,7 @@ prog def rowval, rclass
 	// Define input syntax
 	syntax anything(name=source id="Source of the JSON Input") [,			 ///
 	ELEMents(string) noURL OBid(integer 0) STUBname(string asis) ]
+	
 
 	// If elements is null
 	if `"`elements'"' == "" loc elements ".*"
@@ -100,6 +101,9 @@ prog def keyval, rclass
 	// Define input syntax
 	syntax anything(name=source id="Source of the JSON Input") [,			 ///
 	ELEMents(string) noURL ]
+	
+	javacall com.stata.textfilter.FileFilter main, args(`source')
+	
 
 	// If elements is null
 	if `"`elements'"' == "" loc elements ".*"
